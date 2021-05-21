@@ -53,6 +53,10 @@ window.addEventListener('dblclick', () =>
 }
     canvas.requestFullscreen()
 }
+else if (canvas.webkitRequestFullscreen)
+{
+    canvas.webkitrequestFullscreen()
+}
 else
 {
     document.exitFullscreen()
