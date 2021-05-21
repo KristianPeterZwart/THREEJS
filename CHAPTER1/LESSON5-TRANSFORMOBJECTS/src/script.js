@@ -7,6 +7,7 @@ const canvas = document.querySelector('canvas.webgl')
 // Scene
 const scene = new THREE.Scene()
 
+
 /**
  * Objects
  */
@@ -89,4 +90,18 @@ const renderer = new THREE.WebGLRenderer({
     canvas: canvas
 })
 renderer.setSize(sizes.width, sizes.height)
+
+// Animations
+const tick = () => {
+
+// Update objects
+    mesh.position.x += 0.01
+
+
+// Render
 renderer.render(scene, camera)
+
+    window.requestAnimationFrame(tick)
+}
+
+tick()
