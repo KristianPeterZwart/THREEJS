@@ -16,12 +16,12 @@ const scene = new THREE.Scene()
 
 const geometry = new THREE.BufferGeometry()
 
-const count = 50
+const count = 5
 const positionsArray = new Float32Array(count * 3 * 3)
 
 for(let i = 0; i < count * 3 * 3; i++)
 {
-    positionsArray[i] = Math.random()
+    positionsArray[i] = (Math.random() - 0.5) * 5
 }
 
 const positionsAttribute = new THREE.BufferAttribute(positionsArray, 3)
@@ -33,6 +33,8 @@ const material = new THREE.MeshBasicMaterial({
 })
 const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)
+
+
 
 // Sizes
 const sizes = {
@@ -87,5 +89,6 @@ const tick = () =>
     // Call tick again on the next frame
     window.requestAnimationFrame(tick)
 }
+
 
 tick()
