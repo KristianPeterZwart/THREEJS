@@ -9,6 +9,17 @@ import * as dat from 'dat.gui'
  */
 const gui = new dat.GUI()
 
+const parameters = {
+    color: 0x0000ff
+}
+
+gui
+    .addColor(parameters, 'color')
+    .onChange(() => 
+    {
+       material.color.set(parameters.color)
+    })
+
 /**
  * Base
  */
@@ -38,7 +49,10 @@ gui
     .add(mesh, 'visible')
 
 gui
-    .add(material, 'wireframe')    
+    .add(material, 'wireframe')  
+    
+gui
+    .addColor    
 
 /**
  * Sizes
