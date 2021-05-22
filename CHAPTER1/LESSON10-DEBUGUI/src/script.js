@@ -7,10 +7,17 @@ import * as dat from 'dat.gui'
 /**
  * Debug
  */
-const gui = new dat.GUI()
+const gui = new dat.GUI({ closed: true, width: 400 })
+
+
 
 const parameters = {
-    color: 0x0000ff
+    color: 0x0000ff,
+    spin: () =>
+    {
+        gsap.to(mesh.rotation, { duration: 5, y: mesh.rotation.y + 10000000 * 4 })    
+
+    }
 }
 
 gui
@@ -20,6 +27,9 @@ gui
        material.color.set(parameters.color)
     })
 
+gui
+    .add(parameters, 'spin')
+    
 /**
  * Base
  */
@@ -32,7 +42,8 @@ const scene = new THREE.Scene()
 /**
  * Object
  */
-const geometry = new THREE.BoxGeometry(1, 1, 1)
+
+const geometry = new THREE.TorusKnotGeometry( 10, 3, 100, 16 );
 const material = new THREE.MeshBasicMaterial({ color: 0x0000ff })
 const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)
