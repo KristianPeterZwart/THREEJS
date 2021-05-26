@@ -15,7 +15,8 @@ const parameters = {
     color: 0x0000ff,
     spin: () =>
     {
-        gsap.to(mesh.rotation, { duration: 5, y: mesh.rotation.y + 10000000 * 4 })    
+        gsap.to(mesh.rotation, { duration: 6, y: mesh.rotation.y + 100000 }) 
+        gsap.to(mesh.rotation, { duration: 5, x: mesh.rotation.x + 10000 })   
 
     }
 }
@@ -43,10 +44,18 @@ const scene = new THREE.Scene()
  * Object
  */
 
-const geometry = new THREE.TorusKnotGeometry( 10, 3, 100, 16 );
-const material = new THREE.MeshBasicMaterial({ color: 0x0000ff })
+const geometry = new THREE.TorusGeometry( 10, 3, 100, 16 );
+const material = new THREE.MeshStandardMaterial({ color: 0x0000ff })
 const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)
+
+const pointLight = new THREE.PointLight(0xffffff)
+pointLight.position.set(5,5,5)
+
+scene.add(pointLight) 
+
+
+
 
 // Debug
 gui
@@ -112,6 +121,7 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 /**
  * Animate
  */
+
 const clock = new THREE.Clock()
 
 const tick = () =>
